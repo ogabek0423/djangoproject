@@ -7,6 +7,9 @@ class Book(models.Model):
     price = models.FloatField()
     count = models.IntegerField()
 
+    def __str__(self):
+        return f"{self.title},{self.description},{self.price},{self.count}\n"
+
 
 class Student(models.Model):
     first_name = models.CharField(max_length=20)
@@ -15,8 +18,18 @@ class Student(models.Model):
     username = models.CharField(max_length=20)
     password = models.CharField(max_length=20)
 
+    def __str__(self):
+        return f"{self.first_name},{self.last_name},{self.group_name}"
+
 
 class Booking_book(models.Model):
     book_id = models.ForeignKey(Book, on_delete=models.CASCADE)
     student_id = models.ForeignKey(Student, on_delete=models.CASCADE)
     talked_date = models.DateTimeField()
+
+    def __str__(self):
+        return f"{self.book_id},{self.student_id},{self.talked_date}"
+
+
+
+
