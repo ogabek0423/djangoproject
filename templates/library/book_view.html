@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>book_view</title>
+</head>
+<body>
+    <h1>BOOKS:</h1>
+    {% for book in books %}
+    <ul>
+
+        <h2>{{ book.title }}:</h2>
+        <li>
+    Title: {{ book.title }} <br>
+    Description: {{ book.description }} <br>
+    Price: {{ book.price }} <br>
+    Count: {{ book.count }} <br>
+    </li>
+
+    </ul>
+    {% endfor %}
+
+</body>
+</html>

@@ -9,6 +9,9 @@ class Edu(models.Model):
     price = models.FloatField()
     count = models.IntegerField()
 
+    def __str__(self):
+        return f'{self.title}'
+
 
 class Pupil(models.Model):
     first_name = models.CharField(max_length=20)
@@ -17,8 +20,16 @@ class Pupil(models.Model):
     username = models.CharField(max_length=20)
     password = models.CharField(max_length=20)
 
+    def __str__(self):
+        return f'{self.first_name}, {self.last_name}, {self.group_name}'
+
 
 class Edu_pupil(models.Model):
-    book_id = models.ForeignKey(Edu, on_delete=models.CASCADE)
-    student_id = models.ForeignKey(Pupil, on_delete=models.CASCADE)
+    book_id = models.ManyToManyField(Edu)
+    student_id = models.ManyToManyField(Pupil)
     talked_date = models.DateTimeField()
+
+    def __str__(self):
+        return f'{self.book_id} - {self.student_id}'
+
+
